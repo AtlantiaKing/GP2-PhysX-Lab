@@ -6,6 +6,14 @@
 #include "CylinderPosColorNorm.h"
 #include "Logger.h"
 
+enum class InputIds
+{
+	Up,
+	Down,
+	Left,
+	Right
+};
+
 void TestScene::Initialize()
 {
 	// Create a cube object
@@ -27,6 +35,24 @@ void TestScene::Initialize()
 	const auto pCylinder{ new CylinderPosColorNorm{ 1.5f, 10, 4.0f } };
 	pTorus->AddChild(pCylinder);
 	pCylinder->Translate(0.0f, 8.0f, 0.0f);
+
+	// Input setup
+	m_SceneContext.GetInput()->AddInputAction(InputAction
+		{
+			static_cast<int>(InputIds::Down), InputTriggerState::down, VK_DOWN
+		});
+	m_SceneContext.GetInput()->AddInputAction(InputAction
+		{
+			static_cast<int>(InputIds::Up), InputTriggerState::down, VK_UP
+		});
+	m_SceneContext.GetInput()->AddInputAction(InputAction
+		{
+			static_cast<int>(InputIds::Right), InputTriggerState::down, VK_RIGHT
+		});
+	m_SceneContext.GetInput()->AddInputAction(InputAction
+		{
+			static_cast<int>(InputIds::Left), InputTriggerState::down, VK_LEFT
+		});
 }
 
 void TestScene::Update()
@@ -34,6 +60,17 @@ void TestScene::Update()
 	// Rotate the cube over time
 	const float totalTime = m_SceneContext.GetGameTime()->GetTotal();
 	m_pBox->RotateDegrees(0.0f, 90.0f * totalTime, 0.0);
+
+	XMFLOAT3 translation{};
+	const float movementSpeed{ 10.0f * m_SceneContext.GetGameTime()->GetElapsed() };
+
+	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Right))) translation.x += movementSpeed;
+	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Left))) translation.x -= movementSpeed;
+	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Up))) translation.y += movementSpeed;
+	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Down))) translation.y -= movementSpeed;
+
+	XMStoreFloat3(&translation, XMLoadFloat3(&translation) + XMLoadFloat3(&m_pBox->GetPosition()));
+	m_pBox->Translate(translation.x, translation.y, translation.z);
 }
 
 void TestScene::Draw() const
