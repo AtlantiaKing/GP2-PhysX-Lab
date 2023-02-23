@@ -94,6 +94,7 @@
     <ClInclude Include="EffectLoader.h" />
     <ClInclude Include="EX01_BouncingBalls.h" />
     <ClInclude Include="EX02_FrictionTest.h" />
+    <ClInclude Include="EX03_Forces.h" />
     <ClInclude Include="FreeCamera.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="EffectLoader.cpp" />
     <ClCompile Include="EX01_BouncingBalls.cpp" />
     <ClCompile Include="EX02_FrictionTest.cpp" />
+    <ClCompile Include="EX03_Forces.cpp" />
     <ClCompile Include="FreeCamera.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
