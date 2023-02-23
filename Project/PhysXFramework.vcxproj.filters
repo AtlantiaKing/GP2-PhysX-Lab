@@ -184,7 +184,9 @@
     <ClInclude Include="EX02_FrictionTest.h">
       <Filter>GameFiles\Scenes\W01_PhysX</Filter>
     </ClInclude>
-    <ClInclude Include="EX03_Forces.h" />
+    <ClInclude Include="EX03_Forces.h">
+      <Filter>GameFiles\Scenes\W01_PhysX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -304,6 +306,8 @@
     <ClCompile Include="EX02_FrictionTest.cpp">
       <Filter>GameFiles\Scenes\W01_PhysX</Filter>
     </ClCompile>
-    <ClCompile Include="EX03_Forces.cpp" />
+    <ClCompile Include="EX03_Forces.cpp">
+      <Filter>GameFiles\Scenes\W01_PhysX</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
