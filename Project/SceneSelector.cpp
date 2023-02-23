@@ -15,6 +15,7 @@
 #include "EX02_FrictionTest.h"
 #include "EX03_Forces.h"
 #include "EX04_Torque.h"
+#include "W1_AssignmentScene.h"
 
 #endif
 
@@ -34,6 +35,7 @@ namespace dae
 		pSceneManager->AddGameScene(new EX02_FrictionTest());
 		pSceneManager->AddGameScene(new EX03_Forces());
 		pSceneManager->AddGameScene(new EX04_Torque());
+		pSceneManager->AddGameScene(new W1_AssignmentScene());
 #endif
 
 #ifdef W02
