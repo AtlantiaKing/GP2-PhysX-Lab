@@ -12,6 +12,7 @@
 //#include "TestScene.h"
 //#include "PhysXTestScene.h"
 #include "EX01_BouncingBalls.h"
+#include "EX02_FrictionTest.h"
 
 #endif
 
@@ -28,6 +29,7 @@ namespace dae
 		/*pSceneManager->AddGameScene(new TestScene());
 		pSceneManager->AddGameScene(new PhysXTestScene());*/
 		pSceneManager->AddGameScene(new EX01_BouncingBalls());
+		pSceneManager->AddGameScene(new EX02_FrictionTest());
 #endif
 
 #ifdef W02
