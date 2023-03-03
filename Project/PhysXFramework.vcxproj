@@ -108,6 +108,7 @@
     <ClInclude Include="MeshDataLoader.h" />
     <ClInclude Include="MeshObject.h" />
     <ClInclude Include="MeshObjectTex.h" />
+    <ClInclude Include="PhysicsMeshTestScene.h" />
     <ClInclude Include="PhysxAllocator.h" />
     <ClInclude Include="PhysxErrorCallback.h" />
     <ClInclude Include="PhysxHelpers.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="MeshDataLoader.cpp" />
     <ClCompile Include="MeshObject.cpp" />
     <ClCompile Include="MeshObjectTex.cpp" />
+    <ClCompile Include="PhysicsMeshTestScene.cpp" />
     <ClCompile Include="PhysxErrorCallback.cpp" />
     <ClCompile Include="PhysxManager.cpp" />
     <ClCompile Include="PhysXTestScene.cpp" />
