@@ -139,16 +139,23 @@ void W1_AssignmentScene::Update()
 	const XMFLOAT3 rightAxis{ m_SceneContext.GetCamera()->GetRight() };
 	const XMFLOAT3 forwardAxis{ m_SceneContext.GetCamera()->GetForward() };
 
+	// Rotate the ball
 	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Right))) m_pRb->addTorque(PxVec3{ forwardAxis.x, forwardAxis.y, forwardAxis.z } * -torque);
 	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Left))) m_pRb->addTorque(PxVec3{ forwardAxis.x, forwardAxis.y, forwardAxis.z } * torque);
 	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Up))) m_pRb->addTorque(PxVec3{ rightAxis.x, rightAxis.y, rightAxis.z } * torque);
 	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Down))) m_pRb->addTorque(PxVec3{ rightAxis.x, rightAxis.y, rightAxis.z } * -torque);
+
+	// Jump
 	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Jump))) m_pRb->addForce(PxVec3{ 0.0f, jumpForce, 0.0f }, PxForceMode::eIMPULSE);
+
+	// Reset
 	if (m_SceneContext.GetInput()->IsActionTriggered(static_cast<int>(InputIds::Reset)))
 	{
+		// Reset the ball
 		m_pSphere->Translate(0.0f, 1.0f, -30.0f);
 		m_pSphere->Rotate(0.0f, 0.0f, 0.0f);
 
+		// Reset the wall of cubes
 		for (int x{}; x < m_NrCubesInX; ++x)
 		{
 			for (int y{}; y < m_NrCubesInY; ++y)

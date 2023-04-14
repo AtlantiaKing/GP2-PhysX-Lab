@@ -224,32 +224,28 @@ void W2_AssignmentScene::onTrigger(PxTriggerPair* pairs, PxU32 count)
 
 		const PxTriggerPair& pair = pairs[i];
 
-		if (pair.triggerActor == m_pLeftNotchTrigger)//Left trigger
-		{
-			if (pair.otherActor == m_pLeftBox)
-			{
-				if (pair.status == PxPairFlag::eNOTIFY_TOUCH_FOUND)//entered
-				{
-					m_LeftHatchOpen = true;
+		if(pair.status != PxPairFlag::eNOTIFY_TOUCH_FOUND) continue;
 
-					FMOD_RESULT result = SoundManager::GetInstance()->GetSystem()->playSound(m_pBellSound, nullptr, false, &m_pChannel2D);
-					SoundManager::GetInstance()->ErrorCheck(result);
-				}
-			}
+		// Left trigger
+		if (pair.triggerActor == m_pLeftNotchTrigger && pair.otherActor == m_pLeftBox)
+		{
+			// Open the hatch
+			m_LeftHatchOpen = true;
+
+			// Play sound
+			FMOD_RESULT result = SoundManager::GetInstance()->GetSystem()->playSound(m_pBellSound, nullptr, false, &m_pChannel2D);
+			SoundManager::GetInstance()->ErrorCheck(result);
 		}
 
-		if (pair.triggerActor == m_pRightNotchTrigger)//Right trigger
+		//Right trigger
+		if (pair.triggerActor == m_pRightNotchTrigger && pair.otherActor == m_pRightBox)
 		{
-			if (pair.otherActor == m_pRightBox)
-			{
-				if (pair.status == PxPairFlag::eNOTIFY_TOUCH_FOUND)//entered
-				{
-					m_RightHatchOpen = true;
+			// Open the hatch
+			m_RightHatchOpen = true;
 
-					FMOD_RESULT result = SoundManager::GetInstance()->GetSystem()->playSound(m_pBellSound, nullptr, false, &m_pChannel2D);
-					SoundManager::GetInstance()->ErrorCheck(result);
-				}
-			}
+			// Play sound
+			FMOD_RESULT result = SoundManager::GetInstance()->GetSystem()->playSound(m_pBellSound, nullptr, false, &m_pChannel2D);
+			SoundManager::GetInstance()->ErrorCheck(result);
 		}
 	}
 }
